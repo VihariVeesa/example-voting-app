@@ -24,6 +24,7 @@ pipeline {
             steps {
                 sh "eval \$(aws ecr get-login --no-include-email --region us-east-1) && sleep 2"
                 sh "cd vote && sudo docker build . -t 749963478587.dkr.ecr.us-east-1.amazonaws.com/cicdtest:\${BUILD_NUMBER}"
+                sh "eval \$(aws ecr get-login --no-include-email --region us-east-1) && sleep 2"
                 sh "sudo docker push 749963478587.dkr.ecr.us-east-1.amazonaws.com/cicdtest:\${BUILD_NUMBER}"
             }
         }
